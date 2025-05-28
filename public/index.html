@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>指标图表</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+</head>
+<body>
+  <button onclick="simulateOrder()">模拟买入 BTC</button>
+  <div id="main" style="width: 100%; height: 600px;"></div>
+
+  <script>
+    fetch('/api/indicator/BTCUSDT')
+      .then(res => res.json())
+      .then(data => {
+        const chart = echarts.init(document.getElementById('main'));
+        const option = {
+          title: { text: `BTCUSDT K线 + MACD` },
+          tooltip: { trigger: 'axis' },
+          xAxis: { type: 'category', data: data.times.map(t => new Date(t).toLocaleTimeString()) },
+          yAxis: { type: 'value' },
+          series: [
+            {
+              name: 'Close',
+              type: 'line',
+              data: data.closes,
+            },
+            {
+              name: 'MACD',
+              type: 'line',
+              data: data.macd.macd,
+            },
+            {
+              name: 'Signal',
+              type: 'line',
+              data: data.macd.signal,
+            }
+          ]
+        };
+        chart.setOption(option);
+      });
+
+      function simulateOrder() {
+      fetch('/api/simulate-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          symbol: 'BTCUSDT',
+          side: 'BUY',
+          type: 'MARKET',
+          quantity: 0.01
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert('模拟下单成功: ' + JSON.stringify(data, null, 2));
+      });
+    }
+  </script>
+</body>
+</html>
