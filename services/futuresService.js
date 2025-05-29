@@ -1,3 +1,4 @@
+// 拉取币安合约数据并计算指标
 const axios = require('axios');
 const { computeMACD } = require('../indicators/macd');
 const { computeKDJ } = require('../indicators/kdj');

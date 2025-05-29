@@ -1,3 +1,5 @@
+
+// api/run-strategy/:symbol → 执行策略
 const express = require('express');
 const { runStrategyFor } = require('../services/strategyService');
 const router = express.Router();

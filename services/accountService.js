@@ -1,3 +1,4 @@
+// # 使用 API key 查询账户余额（可选）
 const axios = require('axios');
 const crypto = require('crypto');
 const { HttpsProxyAgent } = require('https-proxy-agent');

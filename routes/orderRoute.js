@@ -1,3 +1,4 @@
+//api/simulate-order → 模拟手动下单
 const express = require('express');
 const { simulateOrder } = require('../services/simulateOrderService');
 const router = express.Router();

@@ -1,3 +1,5 @@
+// api/account → 读取账户余额
+
 const express = require('express');
 const { fetchAccountInfo } = require('../services/accountService');
 const router = express.Router();

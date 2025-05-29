@@ -1,3 +1,5 @@
+// indicatorRoute.js     # /api/indicator/:symbol → 获取K线和指标
+
 const express = require('express');
 const { fetchIndicators } = require('../services/futuresService');
 const router = express.Router();

@@ -1,7 +1,8 @@
+//# 项目入口：注册路由、定时器执行策略
 require('dotenv').config();
 const express = require('express');
 const indicatorRoute = require('./routes/indicatorRoute');
-const accountRoute = require('./routes/accountRoute'); // ✅ 新增
+const accountRoute = require('./routes/accountRoute'); 
 const orderRoute = require('./routes/orderRoute');
 const strategyRoute = require('./routes/strategyRoute');
 const app = express();
